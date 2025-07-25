@@ -1,0 +1,17 @@
+{
+  "condition": {
+    "miniprogram": {
+      "current": 1752216236414,
+      "list": [
+        {
+          "id": 1752216236414,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": "38"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,143 @@
+/* list.css */
+.order-container {
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+.order-filter-bar {
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 12px 0;
+}
+.order-filter-scroll {
+  white-space: nowrap;
+  padding: 0 16px;
+}
+.order-filter-item {
+  display: inline-block;
+  padding: 6px 16px;
+  margin-right: 12px;
+  background: #f5f5f5;
+  border-radius: 16px;
+  font-size: 14px;
+  color: #666;
+  transition: all 0.3s;
+}
+.order-filter-item.active {
+  background: #ff2442;
+  color: #fff;
+}
+.order-list {
+  padding: 16px;
+}
+.order-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+  overflow: hidden;
+  position: relative;
+}
+.group-order {
+  border: 2px solid #ff2442;
+}
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px 0 16px;
+}
+.order-type {
+  font-size: 14px;
+  color: #ff2442;
+  font-weight: 600;
+}
+.order-status {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+}
+.group-status-pending {
+  color: #ff9800;
+}
+.group-status-success {
+  color: #4caf50;
+}
+.group-status-fail {
+  color: #999;
+}
+.order-body {
+  display: flex;
+  padding: 12px 16px 16px 16px;
+}
+.order-product-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: #f5f5f5;
+  margin-right: 16px;
+}
+.order-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.order-title {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.order-price {
+  font-size: 16px;
+  color: #ff2442;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.order-time {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 6px;
+}
+.order-group-detail {
+  margin-top: 6px;
+}
+.group-id {
+  font-size: 12px;
+  color: #666;
+  margin-right: 8px;
+}
+.group-link {
+  font-size: 12px;
+  color: #2196f3;
+  margin-left: 8px;
+  text-decoration: underline;
+}
+.group-members {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+.group-member-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 4px;
+  border: 1px solid #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.order-refund {
+  margin-top: 8px;
+}
+.refund-text {
+  font-size: 12px;
+  color: #ff2442;
+  background: #fff0f0;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.order-empty {
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+  margin-top: 60px;
+} 

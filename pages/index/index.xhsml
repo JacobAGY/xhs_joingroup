@@ -1,0 +1,92 @@
+<!--index.xhsml-->
+<view class="container">
+  <!-- 顶部轮播图（置顶） -->
+  <swiper class="top-swiper" indicator-dots="true" autoplay="true" interval="4000" duration="500">
+    <swiper-item>
+      <image class="top-swiper-image" src="/pages/images/入驻拼团测试.png" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrapper">
+      <image class="search-icon" src="/images/search.png" mode="aspectFit"></image>
+      <input 
+        class="search-input" 
+        placeholder="搜索项目/简介" 
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="onSearchConfirm"
+      />
+    </view>
+  </view>
+
+  <!-- 状态筛选栏 -->
+  <view class="filter-bar">
+    <scroll-view class="filter-scroll" scroll-x="true">
+      <view class="filter-item {{currentStatus === 'all' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="all">全部</view>
+      <view class="filter-item {{currentStatus === 'testing' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="testing">测试中</view>
+      <view class="filter-item {{currentStatus === 'success' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="success">已达标</view>
+      <view class="filter-item {{currentStatus === 'fail' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="fail">未达标</view>
+    </scroll-view>
+  </view>
+
+  <!-- 项目拼团列表 -->
+  <scroll-view 
+    class="product-list" 
+    scroll-y="true" 
+    bindscrolltolower="onLoadMore"
+    refresher-enabled="true"
+    refresher-triggered="{{refreshing}}"
+    bindrefresherrefresh="onRefresh"
+  >
+    <view class="product-grid">
+      <view 
+        class="test-card" 
+        xhs:for="{{productList}}" 
+        xhs:key="groupId"
+        bindtap="onProductClick"
+        data-product="{{item}}"
+      >
+        <view class="test-card-header">
+          <image class="initiator-avatar" src="{{item.initiator.avatar}}"></image>
+          <view class="initiator-meta">
+            <text class="initiator-nickname">{{item.initiator.nickname}}</text>
+            <text class="initiator-intro">{{item.initiator.intro}}</text>
+          </view>
+        </view>
+        <view class="test-card-title">{{item.projectTitle}}</view>
+        <view class="test-card-desc">{{item.projectDesc}}</view>
+        <image class="test-card-image" src="{{item.images[0]}}" mode="aspectFill"></image>
+        <view class="test-card-progress">
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{item.progress}}%"></view>
+          </view>
+          <text class="progress-text">{{item.currentCount}}/{{item.targetCount}}单</text>
+        </view>
+        <view class="test-card-info">
+          <text class="test-card-label">目标：{{item.targetCount}}单</text>
+          <text class="test-card-label">已参与：{{item.currentCount}}人</text>
+          <text class="test-card-label">剩余：{{item.endTime}}</text>
+        </view>
+        <view class="test-card-status test-status-{{item.status}}">
+          {{item.status === 'testing' ? '测试中' : (item.status === 'success' ? '已达标' : '未达标')}}
+        </view>
+      </view>
+    </view>
+    <!-- 加载更多 -->
+    <view class="loading-more" xhs:if="{{loading}}">
+      <text class="loading-text">加载中...</text>
+    </view>
+    <!-- 没有更多数据 -->
+    <view class="no-more" xhs:if="{{noMore}}">
+      <text class="no-more-text">没有更多项目了</text>
+    </view>
+  </scroll-view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" xhs:if="{{productList.length === 0 && !loading}}">
+    <image class="empty-image" src="/images/empty.png" mode="aspectFit"></image>
+    <text class="empty-text">暂无项目</text>
+  </view>
+</view>

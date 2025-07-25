@@ -1,0 +1,240 @@
+/* index.css */
+.container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.search-bar {
+  background-color: #ffffff;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 100;
+}
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.search-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+.search-input {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: center;
+}
+
+.filter-bar {
+  background-color: #ffffff;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.filter-scroll {
+  white-space: nowrap;
+  padding: 0 16px;
+}
+.filter-item {
+  display: inline-block;
+  padding: 6px 16px;
+  margin-right: 12px;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  font-size: 14px;
+  color: #666;
+  transition: all 0.3s ease;
+}
+.filter-item.active {
+  background-color: #ff2442;
+  color: #ffffff;
+}
+
+.product-list {
+  flex: 1;
+  height: calc(100vh - 120px);
+}
+.product-grid {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* 销量测试拼团卡片 */
+.test-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 14px 10px 12px 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+  box-sizing: border-box;
+}
+.test-card:active {
+  box-shadow: 0 4px 16px rgba(255,36,66,0.12);
+}
+.test-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.initiator-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 2px solid #ff2442;
+}
+.initiator-meta {
+  display: flex;
+  flex-direction: column;
+}
+.initiator-nickname {
+  font-size: 14px;
+  color: #ff2442;
+  font-weight: 600;
+}
+.initiator-intro {
+  font-size: 11px;
+  color: #999;
+}
+.test-card-title {
+  font-size: 15px;
+  color: #222;
+  font-weight: 700;
+  margin: 6px 0 2px 0;
+}
+.test-card-desc {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+.test-card-image {
+  width: 100%;
+  height: 110px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 8px;
+  background: #f5f5f5;
+}
+.test-card-progress {
+  margin-bottom: 6px;
+}
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+.progress-fill {
+  height: 100%;
+  background: #ff2442;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+.progress-text {
+  font-size: 11px;
+  color: #ff2442;
+  font-weight: 600;
+}
+.test-card-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.test-card-label {
+  font-size: 11px;
+  color: #999;
+}
+.test-card-status {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 10px;
+  align-self: flex-end;
+  margin-top: 2px;
+}
+.test-status-testing {
+  background: #fff7f8;
+  color: #ff2442;
+  border: 1px solid #ff2442;
+}
+.test-status-success {
+  background: #f0fff4;
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+.test-status-fail {
+  background: #f8f8f8;
+  color: #999;
+  border: 1px solid #ddd;
+}
+
+.loading-more {
+  text-align: center;
+  padding: 20px;
+}
+.loading-text {
+  font-size: 14px;
+  color: #999;
+}
+.no-more {
+  text-align: center;
+  padding: 20px;
+}
+.no-more-text {
+  font-size: 14px;
+  color: #999;
+}
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+.empty-image {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+.empty-text {
+  font-size: 16px;
+  color: #999;
+}
+
+.top-swiper {
+  width: 100%;
+  height: 160px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 0;
+}
+.top-swiper-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+}

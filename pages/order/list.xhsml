@@ -1,0 +1,48 @@
+<!--list.xhsml-->
+<view class="order-container">
+  <!-- 筛选栏 -->
+  <view class="order-filter-bar">
+    <scroll-view class="order-filter-scroll" scroll-x="true">
+      <view class="order-filter-item {{currentStatus === 'all' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="all">全部</view>
+      <view class="order-filter-item {{currentStatus === 'pending' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="pending">待成团</view>
+      <view class="order-filter-item {{currentStatus === 'success' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="success">已成团</view>
+      <view class="order-filter-item {{currentStatus === 'fail' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="fail">已失败</view>
+      <view class="order-filter-item {{currentStatus === 'normal' ? 'active' : ''}}" bindtap="onStatusFilter" data-status="normal">普通订单</view>
+    </scroll-view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="order-list">
+    <block xhs:for="{{orderList}}" xhs:key="id">
+      <view class="order-card {{item.isGroup ? 'group-order' : ''}}">
+        <view class="order-header">
+          <text class="order-type">{{item.isGroup ? '拼团订单' : '普通订单'}}</text>
+          <text class="order-status {{item.isGroup ? 'group-status-' + item.groupStatus : ''}}">
+            {{item.isGroup ? groupStatusText[item.groupStatus] : '已支付'}}
+          </text>
+        </view>
+        <view class="order-body">
+          <image class="order-product-img" src="{{item.product.image}}"></image>
+          <view class="order-info">
+            <text class="order-title">{{item.product.title}}</text>
+            <text class="order-price">¥{{item.price}}</text>
+            <text class="order-time">下单时间：{{item.createTime}}</text>
+            <view class="order-group-detail" xhs:if="{{item.isGroup}}">
+              <text class="group-id">拼团ID：{{item.groupId}}</text>
+              <text class="group-link" bindtap="onViewGroupDetail" data-groupid="{{item.groupId}}">查看拼团详情</text>
+              <view class="group-members">
+                <image class="group-member-avatar" xhs:for="{{item.members}}" xhs:key="id" src="{{item.avatar}}"></image>
+              </view>
+            </view>
+            <view class="order-refund" xhs:if="{{item.isGroup && item.groupStatus === 'fail'}}">
+              <text class="refund-text">拼团超时未成团，系统已自动退费</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="order-empty" xhs:if="{{orderList.length === 0}}">
+      <text>暂无订单</text>
+    </view>
+  </view>
+</view> 

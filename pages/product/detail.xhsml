@@ -1,0 +1,60 @@
+<!--detail.xhsml-->
+<view class="container">
+  <!-- 项目/拼团头部 -->
+  <view class="test-header">
+    <view class="initiator-info">
+      <image class="initiator-avatar" src="{{groupInfo.initiator.avatar}}"></image>
+      <view class="initiator-meta">
+        <text class="initiator-nickname">{{groupInfo.initiator.nickname}}</text>
+        <text class="initiator-intro">{{groupInfo.initiator.intro}}</text>
+      </view>
+    </view>
+    <view class="project-title">{{groupInfo.projectTitle}}</view>
+    <view class="project-desc">{{groupInfo.projectDesc}}</view>
+    <swiper class="project-swiper" indicator-dots="true" autoplay="false" interval="3000" duration="500">
+      <swiper-item xhs:for="{{groupInfo.images}}" xhs:key="*this">
+        <image class="project-image" src="{{item}}" mode="aspectFill"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 拼团进度与状态 -->
+  <view class="test-progress-section">
+    <view class="progress-labels">
+      <text>目标单量：{{groupInfo.targetCount}}单</text>
+      <text>已参与：{{groupInfo.currentCount}}人</text>
+      <text>剩余时间：{{groupInfo.endTime}}</text>
+    </view>
+    <view class="test-progress-bar">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{groupInfo.progress}}%"></view>
+      </view>
+      <text class="progress-text">{{groupInfo.currentCount}}/{{groupInfo.targetCount}}单</text>
+    </view>
+    <view class="test-status {{'test-status-' + groupInfo.status}}">
+      {{statusText[groupInfo.status]}}
+    </view>
+  </view>
+
+  <!-- 参与者列表 -->
+  <view class="test-participants">
+    <view class="participants-title">参与者</view>
+    <view class="participants-scroll">
+      <view class="participant-item" xhs:for="{{groupInfo.participants}}" xhs:key="id">
+        <image class="participant-avatar" src="{{item.avatar}}"></image>
+        <text class="participant-nickname">{{item.nickname}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 拼单按钮与结果说明 -->
+  <view class="test-action-section">
+    <button class="test-join-btn" xhs:if="{{groupInfo.status === 'testing'}}" bindtap="onJoinGroup">参与拼单</button>
+    <view class="test-result" xhs:if="{{groupInfo.status === 'fail'}}">
+      <text>拼单未达标，系统已自动退款</text>
+    </view>
+    <view class="test-result" xhs:if="{{groupInfo.status === 'success'}}">
+      <text>拼单达标，项目即将发货！</text>
+    </view>
+  </view>
+</view> 
